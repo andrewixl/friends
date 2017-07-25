@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  {% if messages %}
+      {% for message in messages %}
+          <p{% if message.tags %} class=message {% endif %}>{{message}}</p>
+      {% endfor %}
+  {% endif %}
+  <h1>Login / Registration</h1>
+  <form class="login" action="/login/verify" method="post">
+    {% csrf_token %}
+    <h2>Login:</h2>
+    Email: <input type="email" name="email" value="">
+    <br><br>
+    Password: <input type="password" name="password" value="">
+    <br><br>
+    <input type="submit" name="login_button" value="Login">
+  </form>
+  <form class="register" action="/login/verify" method="post">
+    {% csrf_token %}
+    <h2>Register:</h2>
+
+      <style media="screen">
+        .message{
+          color:red;
+        }
+      </style>
+    First Name: <input type="text" name="first_name" value="">
+    <br><br>
+    Last Name: <input type="text" name="last_name" value="">
+    <br><br>
+    Email: <input type="email" name="email" value="">
+    <br><br>
+    Password: <input type="password" name="password" value="">
+    <br><br>
+    Confirm Password: <input type="password" name="confirm_password" value="">
+    <br><br>
+    <input type="submit" name="register_button" value="Register">
+  </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+  <body>
+    <h1>WELCOME {{name}}</h1>
+    <form class="logout" action="/logout" method="post">
+      {% csrf_token %}
+      <input type="submit" name="logout" value="Logout">
+    </form>
+    <a href="/addfriend">Add a Friend!</a>
+    <a href="/currentfriends">See Current Friends!</a>
+    <br><br>
+    {%for user in user%}
+      <tr>
+        <td>{{user.first_name}} {{user.last_name}} created at {{user.created_at|timesince}}</td><br>
+      </tr>
+    {%endfor%}
+  </body>
+</html>
